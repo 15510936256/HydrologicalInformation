@@ -14,7 +14,8 @@ import java.util.List;
 
 public class InformationPageProcessor implements PageProcessor {
 
-    private  Site site = Site.me().setRetryTimes(3).setSleepTime(1000 * 3600);
+    private  Site site = Site.me().setRetryTimes(3).setSleepTime(1000 * 60);
+    public static String storeurl = "D:\\resultjson";
     @Override
     public  void process(Page page)
     {
@@ -38,7 +39,7 @@ public class InformationPageProcessor implements PageProcessor {
 
     public static void main(String [] args)
     {
-        Spider.create(new InformationPageProcessor()).setScheduler(new QueueScheduler().setDuplicateRemover(new NothingDuplicateRemover())).addUrl("http://123.127.175.45:8082/ajax/GwtWaterHandler.ashx?Method=SelectRealData").addPipeline(new MyJsonFilePipeline("D:\\resultjson")).thread(1).run();
+        Spider.create(new InformationPageProcessor()).setScheduler(new QueueScheduler().setDuplicateRemover(new NothingDuplicateRemover())).addUrl("http://123.127.175.45:8082/ajax/GwtWaterHandler.ashx?Method=SelectRealData").addPipeline(new MyJsonFilePipeline(storeurl)).thread(1).run();
 
     }
 }
