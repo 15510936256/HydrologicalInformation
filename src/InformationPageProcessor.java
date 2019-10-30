@@ -14,7 +14,8 @@ import java.util.List;
 
 public class InformationPageProcessor implements PageProcessor {
 
-    private  Site site = Site.me().setRetryTimes(3).setSleepTime(1000 * 60);
+
+    private  Site site = Site.me().setRetryTimes(3).setSleepTime(1000 * 3600);   //设置睡眠时间，1000是1秒
     public static String storeurl = "D:\\resultjson";
     @Override
     public  void process(Page page)
